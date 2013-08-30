@@ -1,19 +1,29 @@
 #!/usr/bin/env bash
 
-cd /home/vagrant
-\curl -L https://get.rvm.io | bash -s stable
+test -f ~/.vimrc && exit
 
-source /home/vagrant/.profile
-source /home/vagrant/.rvm/scripts/rvm
+mkdir -p ~/.vim/autoload ~/.vim/bundle
+curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
-sed -ie 's/ftp\.ruby-lang\.org\/pub/ruby\.taobao\.org\/mirrors/' /home/vagrant/.rvm/config/db
-rvm install 2.0.0
-rvm use 2.0.0 --default
+echo "execute pathogen#infect()
+syntax on
+filetype plugin indent on
+Helptags
+set autoindent
+set smartindent
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set nu
+" > ~/.vimrc
 
-gem source -r http://rubygems.org/
-gem source -a http://ruby.taobao.org
-gem install bundler
+cd ~/.vim/bundle
+git clone git://github.com/tpope/vim-rails.git
+git clone git://github.com/tpope/vim-bundler.git
+git clone git://github.com/vim-scripts/dbext.vim.git
 
-source /home/vagrant/.bashrc
-source /home/vagrant/.bash_profile
-source /home/vagrant/.profile
+
+echo "install: --no-rdoc --no-ri
+update:  --no-rdoc --no-ri" > ~/.gemrc
+
+\curl -L https://get.rvm.io | bash -s stable --rails
