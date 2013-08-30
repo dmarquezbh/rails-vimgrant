@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 test -f ~/.vimrc && exit
 
 mkdir -p ~/.vim/autoload ~/.vim/bundle
