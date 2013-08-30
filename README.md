@@ -81,4 +81,4 @@ Finally, to completely wipe the virtual machine from the disk **destroying all i
 
     host $ vagrant destroy # DANGER: all is gone
 
-Please check the [Vagrant documentation](http://vagrantup.com/v2/docs/index.html) for more information on Vagrant.
+Please check the [Vagrant documentation](http://vagrantup.com/v2/getting-started/) for more information on Vagrant.
